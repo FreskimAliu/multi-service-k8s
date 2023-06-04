@@ -18,3 +18,15 @@ after_success:
   - docker push freskimaliu/multi-nginx
   - docker push freskimaliu/multi-server
   - docker push freskimaliu/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: multi-docker-env
+  bucket_name: elasticbeanstalk-us-east-1-250218130509
+  bucket_path: multi-docker
+  on: 
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
